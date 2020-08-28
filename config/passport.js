@@ -12,7 +12,7 @@ passport.use(
     function (accessToken, refreshToken, profile, cb) {
       //Verify CB
       //A user has logged in via Google OAuth
-      console.log(profile);
+      console.log(profile, "<-This is the user's Google profile");
       User.findOne({ googleId: profile.id }, function (err, user) {
         if (err) return cb(err);
         if (user) {
