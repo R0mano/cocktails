@@ -1,16 +1,17 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var session = require('express-session');
-var passport = require('passport');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
+const passport = require('passport');
+const methodOverride = require('method-override');
 
 // load the env vars
 require('dotenv').config();
 
 // create the Express app
-var app = express();
+const app = express();
 
 // connect to the MongoDB with mongoose
 require('./config/database');
@@ -18,8 +19,8 @@ require('./config/database');
 require('./config/passport');
 
 // require our routes
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
 
 // view engine setup
@@ -31,13 +32,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-pp.use(session({
+app.use(session({
   secret: 'SEIRocks!',
   resave: false,
   saveUninitialized: true
 }));
-pp.use(passport.initialize());
+app.use(passport.initialize());
 app.use(passport.session());
+app.use(methodOverride('_method'));
 
 //custom middleware that passes req.user to all templates
 app.use(function(req, res, next) {
