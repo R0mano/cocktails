@@ -1,5 +1,16 @@
+* {
+  box-sizing: border-box;
+}
 
+section.main {
+  padding: 10vw;
+  max-width: 80%;
+}
 
 a {
   color: #00B7FF;
+}
+
+.drinkThumb{
+  max-width: 100px;
 }

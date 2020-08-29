@@ -14,13 +14,10 @@ router.get('/auth/google', passport.authenticate(
 ));
 
 //Google OAuth callbak route
-router.get('/oauth2callback', passport.authenticate(
-  'google',
-  {
+router.get('/oauth2callback', passport.authenticate('google', {
     successRedirect: '/users',
     failureRedirect: '/users',
   }
-
 ));
 
 //Logging out
