@@ -17,6 +17,10 @@
     <button class="form-control btn btn-outline-success col-2" type="submit">
       Search
     </button>
+    <select name="filter" id="">
+      <option value="drinks">Filter by cocktail's name</option>
+      <option value="ingredients">Filter by ingredient's name</option>
+    </select>
     
   </form>
 </div>
@@ -24,7 +28,7 @@
 <section class="main" >
   
   <div class="row row-cols-1 row-cols-md-3">
-    <% if (response.drinks !== null) { response.drinks.forEach((drink) => { %>
+    <% if (response.drinks.length) { response.drinks.forEach((drink) => { %>
       <div class="col mb-4">
         <a href="/drinks/<%= drink.idDrink %>">
           <div class="card h-100">
