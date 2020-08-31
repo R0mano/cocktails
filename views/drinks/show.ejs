@@ -1,0 +1,25 @@
+<%- include('../partials/header') -%>
+<section>
+  <div class="row row-cols-1 row-cols-md-3">
+      <div class="col mb-4">
+          <div class="card h-100">
+            <img src="<%= drink.strDrinkThumb %>" class="card-img-top" alt="drink-thumbnail">
+            <div class="card-body">
+              <h5 class="card-title"><%= drink.strDrink %></h5>
+              <p class="card-text"><%= drink.strIngredient1 %>, <%= drink.strIngredient2  %></p>
+            </div>
+          </div>
+        </div>
+      <% if (user) { %>
+        <form action="/users/drinks" method="POST" >
+          
+          <button name="drink" value="<%= JSON.stringify(drink) %>" type="submit">Add to My Cocktails</button>
+        </form>
+        <% } %>
+</div>
+</section>
+<% if (user) { %>
+<h2><%= user.name %></h2>
+<%}%>
+
+<%- include('../partials/footer') -%>

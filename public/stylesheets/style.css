@@ -5,10 +5,12 @@
 section.main {
   padding: 10vw;
   max-width: 80%;
+  margin: 0 auto;
+  color: #382933;
 }
 
 a {
-  color: #00B7FF;
+  color: inherit;
 }
 
 .drinkThumb{

@@ -21,6 +21,7 @@ require('./config/passport');
 // require our routes
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const drinksRouter = require('./routes/drinks');
 
 
 // view engine setup
@@ -49,6 +50,7 @@ app.use(function(req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
+app.use('/', drinksRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

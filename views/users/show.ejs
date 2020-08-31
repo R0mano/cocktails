@@ -1,0 +1,34 @@
+<%- include('../partials/header') -%>
+
+
+<section>
+  <% drinks.forEach((drink) => { %>
+
+  <div class="row row-cols-1 row-cols-md-3">
+      <div class="col mb-4">
+          <div class="card h-100">
+            <img src="<%= drink.image %>" class="card-img-top" alt="drink-thumbnail">
+            <div class="card-body">
+              <h5 class="card-title"><%= drink.name %></h5>
+              <% drink.ingredients.forEach((i) => { %>
+              <p class="card-text"><%= i.qty %> <%= i.name  %></p>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+</div>
+<% }); %>
+
+</section>
+<form action="/users/drinks?_method=DELETE" method="POST">
+<button type="submit" >DELETE ALL</button>
+</form>
+
+
+
+
+
+
+
+
+<%- include('../partials/footer') -%>
