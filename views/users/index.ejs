@@ -18,8 +18,8 @@
       Search
     </button>
     <select name="filter" id="">
-      <option value="drinks">Filter by cocktail's name</option>
-      <option value="ingredients">Filter by ingredient's name</option>
+      <option value="<%= filterOptions.byDrinkName %>">Filter by cocktail's name</option>
+      <option value="<%= filterOptions.byIngredientName %>">Filter by ingredient's name</option>
     </select>
     
   </form>
@@ -28,14 +28,13 @@
 <section class="main" >
   
   <div class="row row-cols-1 row-cols-md-3">
-    <% if (response.drinks.length) { response.drinks.forEach((drink) => { %>
+    <% if (response.drinks !== null) { response.drinks.forEach((drink) => { %>
       <div class="col mb-4">
         <a href="/drinks/<%= drink.idDrink %>">
           <div class="card h-100">
             <img src="<%= drink.strDrinkThumb %>" class="card-img-top" alt="drink-thumbnail">
             <div class="card-body">
               <h5 class="card-title"><%= drink.strDrink %></h5>
-              <p class="card-text"><%= drink.strIngredient1 %>, <%= drink.strIngredient2  %></p>
             </div>
           </div>
         </a>

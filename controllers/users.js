@@ -15,33 +15,16 @@ function index(req, res) {
   // console.log(req.query, "This is req.query==========================================");
   // console.log(req.user, "this is req.user///////////////////////////////////////");
   
-  // const filterOptions = {
-  //   byDrinkName: 'search.php?s=',
-  //   byIngredientName: 'filter.php?i=',
-  // }
-
-  // const queryFilter = req.query.filter || filterOptions.byDrinkName;
-  // console.log(queryFilter, 'QUERY FILTER');
-  let options;
-  const userQuery = req.query.userQuery;
-  // console.log(req.query.filter);
-  if (req.query.filter === 'drinks') {
-    // console.log('We are in drinks');
-    options = {
-      url : `${rootURL}search.php?s=${userQuery}`,
-    }
-  
-  } else if(req.query.filter === 'ingredients') {
-    // console.log('We are in ingredients');
-    options = {
-      url : `${rootURL}filter.php?i=${userQuery}`,
-    }
-  } else {
-    // console.log('no filters');
-    options = {
-      url : `${rootURL}search.php?s=${userQuery}`,
-    }
+  const filterOptions = {
+    byDrinkName: 'search.php?s=',
+    byIngredientName: 'filter.php?i=',
   }
+
+  const queryFilter = req.query.filter || filterOptions.byDrinkName;
+  const userQuery = req.query.userQuery;
+  let options= {
+    url : `${rootURL}${queryFilter}${userQuery}`,
+  };
   request(
     options, function(err, response, body) {
       // console.log(body, 'bodyyyyyyyyyyyyyyy');
@@ -54,11 +37,11 @@ function index(req, res) {
             drinks: [],
           }
         }
-      
-      console.log(response, 'this is the data retrieved from API');
+      // console.log(response, 'this is the data retrieved from API');
       res.render("users/index", {
         title: "Cocktails",
         response,
+        filterOptions,
       });
     }
     }
@@ -116,6 +99,7 @@ function show(req,res) {
     res.render('users/show', {
       title: 'My Cocktail',
       drinks,
+      
     })
   })
 }
