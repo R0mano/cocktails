@@ -4,6 +4,7 @@ const drinksCtrl = require('../controllers/drinks.js');
 
 
 /* GET users listing. */
+router.get('/drinks', drinksCtrl.index);
 router.get('/drinks/:id', drinksCtrl.show);
 
 // Protecting route!!

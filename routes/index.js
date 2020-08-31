@@ -4,7 +4,7 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.redirect('/users');
+  res.redirect('/drinks');
 });
 
 // User wants to log in
@@ -15,15 +15,15 @@ router.get('/auth/google', passport.authenticate(
 
 //Google OAuth callbak route
 router.get('/oauth2callback', passport.authenticate('google', {
-    successRedirect: '/users',
-    failureRedirect: '/users',
+    successRedirect: '/drinks',
+    failureRedirect: '/drinks',
   }
 ));
 
 //Logging out
 router.get('/logout', function(req, res) {
   req.logout();
-  res.redirect('/users');
+  res.redirect('/drinks');
 });
 
 module.exports = router;
