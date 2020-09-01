@@ -16,6 +16,20 @@ const ingredientSchema = new Schema(
   }
 );
 
+const commentSchema = Schema (
+  {
+    content: {
+      type: String,
+      required: true,
+      minlength: 3,
+      maxlength: 300,
+    },
+    users: [Schema.Types.ObjectId],
+  }, {
+    timestamps: true,
+  }
+)
+
 const drinkSchema = new Schema(
   {
     name: {
@@ -28,8 +42,13 @@ const drinkSchema = new Schema(
     image: String,
     glass: String,
     instructions: String,
-    comments: [String],
+    comments: [commentSchema],
     users: [Schema.Types.ObjectId],
+    custom: {
+      type: String,
+      enum: ['custom', 'reg'],
+      default: 'reg',
+    }
 }, {
   timestamps: true,
 }

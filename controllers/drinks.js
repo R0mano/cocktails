@@ -16,6 +16,7 @@ function index(req, res) {
     byIngredientName: 'filter.php?i=',
   }
 
+
   const queryFilter = req.query.filter || filterOptions.byDrinkName;
   const userQuery = req.query.userQuery;
   let options= {

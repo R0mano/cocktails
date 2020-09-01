@@ -92,27 +92,36 @@ function edit(req, res) {
 function update(req, res) {
   console.log(req.body, 'This is req.body');
   const updatedDrink = req.body;
-  Drink.findById(req.params.id, function(err, drink) {
-    if (err){console.log(err);}else{
-    drink.name = updatedDrink.drinkName;
-    drink.ingredients = [];
 
+  let drink = new Drink();
+
+
+    drink.name = updatedDrink.drinkName;
     // Replace findByIdAndUpdate by findById to be able to displey the console.log()
-    console.log(drink.ingredients, 'drink.ingredients EMPTY');
+    // console.log(drink.ingredients, 'drink.ingredients EMPTY');
+    // updatedDrink.ingredientName.forEach((newIngredient, i) => {
+    //   if(newIngredient) {
+    //     drink.ingredients[i].name = newIngredient;
+    //   }
+    // });
+    // updatedDrink.qty.forEach((q, i) => {
+    //   drink.ingredients[i].qty = q;
+    // });
+
 
     for (let i = 0; i < updatedDrink.ingredientName.length; i++) {
-      let newIngredient = {
+      if(updatedDrink.ingredientName[i]) {
+      drink.ingredients.push( {
         name: updatedDrink.ingredientName[i],
         qty: (updatedDrink.qty[i]) ? updatedDrink.qty[i] : '',
-      }
-      if (newIngredient.name) {
-      drink.ingredients.push(newIngredient);
-      }
+      });
+    }
     }
     console.log(drink.ingredients, 'drink.ingredients POPULATED');
     drink.glass = updatedDrink.glass;
     drink.image = updatedDrink.image;
     drink.instructions = updatedDrink.instructions;
+    drink.custom = 'custom';
     // console.log(drink.ingredient, 'drink.ingredients AFTER');
 
     console.log(drink, 'This is the finished and updated drink');
@@ -121,8 +130,8 @@ function update(req, res) {
     });
     
 
-  }
-  });
+  
+  
 }
 
 function deleteOne(req, res) {
