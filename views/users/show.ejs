@@ -1,34 +1,30 @@
 <%- include('../partials/header') -%>
-
-
 <section>
-  <% drinks.forEach((drink) => { %>
-
-  <div class="row row-cols-1 row-cols-md-3">
-      <div class="col mb-4">
+  <div class="row row-cols-1 row-cols-md-2">
+      <div id="drink-details" class="col mb-4">
           <div class="card h-100">
             <img src="<%= drink.image %>" class="card-img-top" alt="drink-thumbnail">
             <div class="card-body">
-              <h5 class="card-title"><%= drink.name %></h5>
-              <% drink.ingredients.forEach((i) => { %>
-              <p class="card-text"><%= i.qty %> <%= i.name  %></p>
-              <% }); %>
+              <h3 class="card-title drink-name"><%= drink.name %></h3>
+              <hr>
+              <p class="card-text"> <strong>Ingredients:</strong> 
+              <%drink.ingredients.forEach((i) => {%>
+                <%= i.qty %> <%= i.name %>,
+                <% }); %>
+              </p>
+              <p class="card-text"><strong>Served in:</strong> <%= drink.glass %></p>
+              <p class="card-text"> <strong>Instructions:</strong> <%= drink.instructions %></p>
             </div>
+            <% if (user) { %>
+              <a class="btn btn-sm btn-warning" href="/users/drinks/<%= drink._id %>/edit">Edit</a>
+              <form action="/users/drinks/<%= drink._id %>?_method=DELETE" method="POST" >
+                <button id="edit" name="drink" class="btn btn-danger" type="submit">Delete</button>
+              </form>
+              <% } %>
           </div>
         </div>
-</div>
-<% }); %>
-
+  </div>
+  <a class="btn btn-primary" href="/users/drinks">Return to my cocktails</a>
 </section>
-<form action="/users/drinks?_method=DELETE" method="POST">
-<button type="submit" >DELETE ALL</button>
-</form>
-
-
-
-
-
-
-
 
 <%- include('../partials/footer') -%>

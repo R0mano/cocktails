@@ -1,8 +1,5 @@
 <%- include('../partials/header') -%>
 <section class="top" ></section>
-<h1><%= title %></h1>
-<p>
-  Welcome to <%= title %>
   
 </p>
 <div class="mx-auto col-10">
@@ -30,14 +27,14 @@
   <div class="row row-cols-1 row-cols-md-3">
     <% if (response.drinks !== null) { response.drinks.forEach((drink) => { %>
       <div class="col mb-4">
-        <a href="/drinks/<%= drink.idDrink %>">
-          <div class="card h-100">
-            <img src="<%= drink.strDrinkThumb %>" class="card-img-top" alt="drink-thumbnail">
-            <div class="card-body">
-              <h5 class="card-title"><%= drink.strDrink %></h5>
-            </div>
+        <div class="card h-100">
+          <img src="<%= drink.strDrinkThumb %>" class="card-img-top" alt="drink-thumbnail">
+          <div class="card-body">
+            <h3 class="card-title drink-name"><%= drink.strDrink %></h3>
           </div>
-        </a>
+          <a class="btn btn-sm btn-primary" href="/drinks/<%= drink.idDrink %>">See Details</a>
+          </div>
+        
         </div>
       
 

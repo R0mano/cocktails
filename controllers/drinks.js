@@ -46,7 +46,7 @@ function index(req, res) {
 }
 
 function show(req, res) {
-  console.log(req.params);
+  // console.log(req.params);
   
     // console.log(req.query, "This is req.query==========================================");
     // console.log(req.user, "this is req.user///////////////////////////////////////");
@@ -60,7 +60,7 @@ function show(req, res) {
       options, function(err, response, body) {
         if (err) {console.log(err);} else {
         const drink = JSON.parse(body).drinks[0];
-        console.log(drink, 'this is the data retrieved from API');
+        // console.log(drink, 'this is the data retrieved from API');
         res.render("drinks/show", {
           title: "Cocktails",
           drink,

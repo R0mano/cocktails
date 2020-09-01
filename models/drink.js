@@ -26,6 +26,7 @@ const drinkSchema = new Schema(
     },
     ingredients: [ingredientSchema],
     image: String,
+    glass: String,
     instructions: String,
     comments: [String],
     users: [Schema.Types.ObjectId],

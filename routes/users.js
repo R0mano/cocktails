@@ -4,10 +4,13 @@ const usersCtrl = require('../controllers/users.js');
 
 
 /* GET users listing. */
-// router.get('/users', usersCtrl.index);
 router.post('/users/drinks', isLoggedIn, usersCtrl.create);
-router.get('/users/drinks', isLoggedIn, usersCtrl.show);
-router.delete('/users/drinks', isLoggedIn, usersCtrl.delete);
+router.get('/users/drinks', isLoggedIn, usersCtrl.index);
+router.delete('/users/drinks', isLoggedIn, usersCtrl.deleteAll);
+router.get('/users/drinks/:id', isLoggedIn, usersCtrl.show);
+router.delete('/users/drinks/:id', isLoggedIn, usersCtrl.deleteOne);
+router.get('/users/drinks/:id/edit', isLoggedIn, usersCtrl.edit);
+router.put('/users/drinks/:id', isLoggedIn, usersCtrl.update);
 
 // Protecting route!!
 function isLoggedIn(req, res, next) {
