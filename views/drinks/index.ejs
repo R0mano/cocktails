@@ -1,25 +1,27 @@
 <%- include('../partials/header') -%>
 <section class="top" ></section>
-  
-</p>
-<div class="mx-auto col-10">
-  <form class="form-inline mr-auto" action="/drinks" method="GET">
-    <input
-      class="form-control col-10"
-      type="search"
-      placeholder="Search for a cocktail or ingredient (E.g. 'margarita' or 'vodka' or 'orange juice' )"
-      aria-label="Search"
-      name="userQuery"
-    />
-    <button class="form-control btn btn-outline-success col-2" type="submit">
-      Search
-    </button>
-    <span>Search by</span>
+<form class="form-inline mr-auto" action="/drinks" method="GET">
+<div class="input-group mb-3 mx-auto col-10">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Search by</label>
+  </div>
     <select name="filter" id="search-by">
       <option value="<%= filterOptions.byDrinkName %>">cocktail name</option>
       <option value="<%= filterOptions.byIngredientName %>">ingredient</option>
     </select>
-  </form>
+    <input
+    class="form-control col-10"
+    type="search"
+    placeholder="Search for a cocktail or ingredient (E.g. 'margarita' or 'vodka' or 'orange juice' )"
+    aria-label="Search"
+    name="userQuery"
+  />
+  <button class="form-control btn btn-outline-success col-2" type="submit">
+    Search
+  </button>
+</div>
+</form>
+
 <form action="/drinks" method="GET">
 <nav aria-label="">
   <ul class="pagination justify-content-center pagination-sm">

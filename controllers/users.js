@@ -20,7 +20,7 @@ function index(req,res) {
     // console.log(drinks);
     res.render('users/index', {
       title: 'My Cocktail',
-      drinks,     
+      drinks,
     });
   });
 }

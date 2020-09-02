@@ -24,7 +24,7 @@ function index(req, res) {
   };
 
   if (req.query.firstLetter) {
-    console.log('We are in FIRST LETTER');
+    // console.log('We are in FIRST LETTER');
     options.url = `${rootURL}search.php?f=${req.query.firstLetter}`
   }
 

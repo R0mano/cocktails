@@ -4,8 +4,18 @@
 html, body {
   min-height: 100vh;
 }
+
 body {
-  position: relative
+  position: relative;
+  /* background-color: #070d59; */
+}
+
+.navigation {
+  /* background-color: #070d59!important; */
+}
+
+#logo {
+  max-width: 180px;
 }
 
 section.main {
