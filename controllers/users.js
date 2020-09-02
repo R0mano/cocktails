@@ -62,7 +62,6 @@ function create(req, res) {
       res.redirect('/users/drinks');
     });
     // console.log(drink, 'This is the newly created drink in the user Favorites');
-  // })
   });
 }
 
@@ -111,12 +110,9 @@ function show(req, res) {
         res.render('users/show', {
           title: 'Drink details',
           drink,
-          
         });
       }
     });
-    
-  // });
 }
 
 function edit(req, res) {
@@ -138,17 +134,6 @@ function update(req, res) {
 
 
     newDrink.name = updatedDrink.drinkName;
-    // Replace findByIdAndUpdate by findById to be able to displey the console.log()
-    // console.log(newDrink.ingredients, 'newDrink.ingredients EMPTY');
-    // updatedDrink.ingredientName.forEach((newIngredient, i) => {
-    //   if(newIngredient) {
-    //     newDrink.ingredients[i].name = newIngredient;
-    //   }
-    // });
-    // updatedDrink.qty.forEach((q, i) => {
-    //   newDrink.ingredients[i].qty = q;
-    // });
-
 
     for (let i = 0; i < updatedDrink.ingredientName.length; i++) {
       if(updatedDrink.ingredientName[i]) {
