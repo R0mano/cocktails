@@ -1,8 +1,6 @@
-const request = require('request');
 const User = require("../models/user");
 const Drink = require('../models/drink');
 
-const rootURL = 'https://www.thecocktaildb.com/api/json/v1/1/';
 
 module.exports = {
   index,
@@ -68,14 +66,19 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  Drink.findById(req.params.id, function(err, drink) {
-    if (err) {console.log(err);} else {
-      res.render('users/show', {
-        title: 'Drink details',
-        drink,
-      })
-    }
-  });
+  Drink.findById(req.params.id).populate({path: 'comments', populate: {path: 'author', model: 'User'}}).exec(function(err, drink) {
+    // console.log(drink, 'drinkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
+    // console.log(req.user, 'userrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
+      if (err) {console.log(err);} else {
+        res.render('users/show', {
+          title: 'Drink details',
+          drink,
+          
+        });
+      }
+    });
+    
+  // });
 }
 
 function edit(req, res) {
@@ -93,45 +96,42 @@ function update(req, res) {
   console.log(req.body, 'This is req.body');
   const updatedDrink = req.body;
 
-  let drink = new Drink();
+  let newDrink = new Drink();
 
 
-    drink.name = updatedDrink.drinkName;
+    newDrink.name = updatedDrink.drinkName;
     // Replace findByIdAndUpdate by findById to be able to displey the console.log()
-    // console.log(drink.ingredients, 'drink.ingredients EMPTY');
+    // console.log(newDrink.ingredients, 'newDrink.ingredients EMPTY');
     // updatedDrink.ingredientName.forEach((newIngredient, i) => {
     //   if(newIngredient) {
-    //     drink.ingredients[i].name = newIngredient;
+    //     newDrink.ingredients[i].name = newIngredient;
     //   }
     // });
     // updatedDrink.qty.forEach((q, i) => {
-    //   drink.ingredients[i].qty = q;
+    //   newDrink.ingredients[i].qty = q;
     // });
 
 
     for (let i = 0; i < updatedDrink.ingredientName.length; i++) {
       if(updatedDrink.ingredientName[i]) {
-      drink.ingredients.push( {
+      newDrink.ingredients.push( {
         name: updatedDrink.ingredientName[i],
         qty: (updatedDrink.qty[i]) ? updatedDrink.qty[i] : '',
       });
     }
     }
-    console.log(drink.ingredients, 'drink.ingredients POPULATED');
-    drink.glass = updatedDrink.glass;
-    drink.image = updatedDrink.image;
-    drink.instructions = updatedDrink.instructions;
-    drink.custom = 'custom';
-    // console.log(drink.ingredient, 'drink.ingredients AFTER');
+    // console.log(newDrink.ingredients, 'newDrink.ingredients POPULATED');
+    newDrink.glass = updatedDrink.glass;
+    newDrink.image = updatedDrink.image;
+    newDrink.instructions = updatedDrink.instructions;
+    newDrink.users.push(req.user._id);
+    newDrink.custom = 'custom';
+    // console.log(newDrink.ingredient, 'newDrink.ingredients AFTER');
 
-    console.log(drink, 'This is the finished and updated drink');
-    drink.save(function(err) {
-      res.redirect(`/users/drinks/${drink._id}`);
+    // console.log(newDrink, 'This is the finished and updated newDrink');
+    newDrink.save(function(err) {
+      res.redirect('/users/drinks');
     });
-    
-
-  
-  
 }
 
 function deleteOne(req, res) {
@@ -144,6 +144,4 @@ function deleteAll (req, res) {
   Drink.deleteMany({}, function(err) {
     res.redirect('/users/drinks');
   });
-  
-  
 }

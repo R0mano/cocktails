@@ -5,6 +5,7 @@ const rootURL = 'https://www.thecocktaildb.com/api/json/v1/1/';
 module.exports = {
   index,
   show,
+  indexByLetter,
 };
 
 function index(req, res) {
@@ -14,6 +15,7 @@ function index(req, res) {
   const filterOptions = {
     byDrinkName: 'search.php?s=',
     byIngredientName: 'filter.php?i=',
+    // byFirstLetter: 'search.php?f=',
   }
 
 
@@ -43,8 +45,47 @@ function index(req, res) {
     }
     }
     );
-  
 }
+
+function indexByLetter(req, res) {
+  console.log(req.query, 'this is req.query');
+
+  const filterOptions = {
+    byDrinkName: 'search.php?s=',
+    byIngredientName: 'filter.php?i=',
+    // byFirstLetter: 'search.php?f=',
+  }
+
+  const userQuery = req.query.firstLetter;
+
+  let options= {
+    url : `${rootURL}search.php?f=${userQuery}`,
+  };
+
+  request(
+    options, function(err, response, body) {
+      // console.log(body, 'bodyyyyyyyyyyyyyyy');
+      if (err) {console.log(err, 'err');} else {
+        // console.log(response, 'responseeeeeeeeeeee');
+        if(body) {
+          response = JSON.parse(body);
+        } else {
+          response = {
+            drinks: [],
+          }
+        }
+      // console.log(response, 'this is the data retrieved from API');
+      res.render("drinks/index", {
+        title: "Cocktails",
+        response,
+        filterOptions,
+      });
+    }
+    }
+    );
+
+}
+
 
 function show(req, res) {
   // console.log(req.params);

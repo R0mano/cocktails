@@ -24,7 +24,11 @@ const commentSchema = Schema (
       minlength: 3,
       maxlength: 300,
     },
-    users: [Schema.Types.ObjectId],
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    }
+    
   }, {
     timestamps: true,
   }

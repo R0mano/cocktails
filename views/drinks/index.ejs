@@ -18,9 +18,43 @@
       <option value="<%= filterOptions.byDrinkName %>">Search by cocktail's name</option>
       <option value="<%= filterOptions.byIngredientName %>">Search by ingredient's name</option>
     </select>
-    
   </form>
-</div>
+<form action="drinks/firstletter" method="GET">
+<nav aria-label="">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      
+    <li class="page-item"><button class="page-link" name="firstLetter" value="a" type="submit">A</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="b" type="submit">B</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="c" type="submit">C</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="d" type="submit">D</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="e" type="submit">E</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="f" type="submit">F</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="g" type="submit">G</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="h" type="submit">H</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="i" type="submit">I</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="j" type="submit">J</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="k" type="submit">K</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="l" type="submit">L</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="m" type="submit">M</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="n" type="submit">N</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="o" type="submit">O</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="p" type="submit">P</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="q" type="submit">Q</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="r" type="submit">R</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="s" type="submit">S</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="t" type="submit">T</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="u" type="submit">U</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="v" type="submit">V</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="w" type="submit">W</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="x" type="submit">X</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="y" type="submit">Y</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="z" type="submit">Z</button></li>
+   
+  </ul>
+</nav>
+</form>
+
 
 <section class="main" >
   
@@ -28,23 +62,15 @@
     <% if (response.drinks !== null) { response.drinks.forEach((drink) => { %>
       <div class="col mb-4">
         <div class="card h-100">
+          <a href="/drinks/<%= drink.idDrink %>">
           <img src="<%= drink.strDrinkThumb %>" class="card-img-top" alt="drink-thumbnail">
+        </a>
           <div class="card-body">
             <h3 class="card-title drink-name"><%= drink.strDrink %></h3>
           </div>
           <a class="btn btn-sm btn-primary" href="/drinks/<%= drink.idDrink %>">See Details</a>
           </div>
-        
         </div>
-      
-
-
-<!-- 
-  <div class="drink">
-    <h3 class="drinkTitle" >c</h3>
-    <img class="drinkThumb" src=" <%= drink.strDrinkThumb %>" alt="drink thumbnail" />
-    <p class="drinkInstructions" ><%= drink.strInstructions %></p>
-  </div> -->
   <% });} %>
 </div>
 </section>

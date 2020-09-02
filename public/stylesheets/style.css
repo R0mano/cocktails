@@ -6,8 +6,8 @@ body {
 }
 
 section.main {
-  padding: 10vw;
-  max-width: 80%;
+  padding: 10vw 0;
+  max-width: 85%;
   margin: 0 auto;
   color: #382933;
 }
@@ -16,7 +16,11 @@ a {
   color: inherit;
 }
 
-.drinkThumb{
+.custom {
+  border: 2px solid #ffc93c;
+}
+
+.drinkThumb {
   max-width: 100px;
 }
 
@@ -33,25 +37,40 @@ a {
   margin: 0 auto;
 }
 
-#edit {
+#delete-fav-drink-form {
+  display: contents;
+}
+
+#edit-fav-drink {
   display: block;
 }
 
+.user-avatar {
+  max-width: 65px;
+}
+
+#comments {
+  padding: 0 10vh;
+  max-width: 80%;
+  margin: 0 auto;
+  /* color: #382933; */
+}
+
 .footer-padding {
-	padding-bottom: 60px;
+  padding-bottom: 60px;
 }
 
 .footer {
-	/* position: fixed; */
-	text-align: center;
-	bottom: 0;
-	width: 100%;
-	height: 60px;
-	background-color: #382933;
+  /* position: fixed; */
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #382933;
 }
 
 .footer p {
-	margin-top: 25px;
-	font-size: 12px;
+  margin-top: 25px;
+  font-size: 12px;
   color: #fff;
 }
