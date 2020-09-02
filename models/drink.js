@@ -43,7 +43,10 @@ const drinkSchema = new Schema(
       required: true
     },
     ingredients: [ingredientSchema],
-    image: String,
+    image: {
+      type: String,
+      default: "/images/default-cocktail-img.jpg",
+    },
     glass: String,
     instructions: String,
     comments: [commentSchema],

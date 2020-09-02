@@ -10,6 +10,8 @@ module.exports = {
   deleteOne,
   edit,
   update,
+  new: newCocktail,
+  createNewCocktail,
 };
 
 function index(req,res) {
@@ -62,7 +64,43 @@ function create(req, res) {
     // console.log(drink, 'This is the newly created drink in the user Favorites');
   // })
   });
-    
+}
+
+function newCocktail(req, res) {
+  res.render('users/new', {
+    title: "Create a New Drink",
+  });
+}
+
+function createNewCocktail(req, res) {
+  const newFavDrink = req.body;
+  console.log(newFavDrink, 'req.body');
+
+  drink = new Drink();
+  drink.name = newFavDrink.drinkName;
+  drink.custom = 'custom';
+  if (newFavDrink.image) {
+    drink.image = newFavDrink.image;
+  }
+  drink.glass = newFavDrink.glass;
+  drink.instructions = newFavDrink.instructions;
+  drink.users.push(req.user._id);
+  
+  for (let i = 0; i < newFavDrink.ingredientName.length; i++) {
+    if(newFavDrink.ingredientName[i]) {
+    drink.ingredients.push( {
+      name: newFavDrink.ingredientName[i],
+      qty: (newFavDrink.qty[i]) ? newFavDrink.qty[i] : '',
+    });
+  }
+  }
+  console.log(drink, "new populated Drink()");
+
+  drink.save(function(err) {
+    if (err) {console.log(err)}
+    res.redirect('/users/drinks');
+  });
+
 }
 
 function show(req, res) {
@@ -93,7 +131,7 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  console.log(req.body, 'This is req.body');
+  // console.log(req.body, 'This is req.body');
   const updatedDrink = req.body;
 
   let newDrink = new Drink();
