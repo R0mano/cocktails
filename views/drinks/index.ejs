@@ -7,21 +7,22 @@
     <input
       class="form-control col-10"
       type="search"
-      placeholder="Search for a cocktail or ingredients seperated by commas (E.g. 'margarita' or 'vodka, orange juice' )"
+      placeholder="Search for a cocktail or ingredient (E.g. 'margarita' or 'vodka' or 'orange juice' )"
       aria-label="Search"
       name="userQuery"
     />
     <button class="form-control btn btn-outline-success col-2" type="submit">
       Search
     </button>
-    <select name="filter" id="">
-      <option value="<%= filterOptions.byDrinkName %>">Search by cocktail's name</option>
-      <option value="<%= filterOptions.byIngredientName %>">Search by ingredient's name</option>
+    <span>Search by</span>
+    <select name="filter" id="search-by">
+      <option value="<%= filterOptions.byDrinkName %>">cocktail name</option>
+      <option value="<%= filterOptions.byIngredientName %>">ingredient</option>
     </select>
   </form>
-<form action="drinks/firstletter" method="GET">
+<form action="/drinks" method="GET">
 <nav aria-label="">
-  <ul class="pagination justify-content-center">
+  <ul class="pagination justify-content-center pagination-sm">
     <li class="page-item">
       
     <li class="page-item"><button class="page-link" name="firstLetter" value="a" type="submit">A</button></li>
@@ -50,6 +51,16 @@
     <li class="page-item"><button class="page-link" name="firstLetter" value="x" type="submit">X</button></li>
     <li class="page-item"><button class="page-link" name="firstLetter" value="y" type="submit">Y</button></li>
     <li class="page-item"><button class="page-link" name="firstLetter" value="z" type="submit">Z</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="0" type="submit">0</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="1" type="submit">1</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="2" type="submit">2</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="3" type="submit">3</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="4" type="submit">4</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="5" type="submit">5</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="6" type="submit">6</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="7" type="submit">7</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="8" type="submit">8</button></li>
+    <li class="page-item"><button class="page-link" name="firstLetter" value="9" type="submit">9</button></li>
    
   </ul>
 </nav>

@@ -1,6 +1,7 @@
 <%- include('../partials/header') -%>
 <section class="main" >
   <h1>Edit <%= drink.name %></h1>
+  <h5>Editing a drink will create an edited copy of the original cocktail. On your "favorite cocktails" page you can easily identify a custom cocktail by its golden border </h5>
   <br>
 <form action="/users/drinks/<%= drink._id %>?_method=PUT" method="POST" >
   <div class="form-group">
@@ -9,7 +10,7 @@
   </div>
 <br>
   
-  <label >Ingredients</label> 
+  <label >Ingredients and Quantites</label> 
   <div class="row">
     <% drink.ingredients.forEach((ingredient, i) => { %>
       <div class="col-6">

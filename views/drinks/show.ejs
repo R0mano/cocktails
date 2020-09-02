@@ -12,17 +12,14 @@
               <p class="card-text"> <strong>Instructions:</strong> <%= drink.strInstructions %></p>
             </div>
             <% if (user) { %>
-              <form action="/users/drinks" method="POST" >
+              <form id="add-drink-form" action="/users/drinks" method="POST" >
                 
-                <button id="add-drink" name="drink" class="btn btn-success" value="<%= JSON.stringify(drink) %>" type="submit">Add to My Cocktails</button>
+                <button name="drink" class="btn btn-success" value="<%= JSON.stringify(drink) %>" type="submit">Add to My Cocktails</button>
               </form>
               <% } %>
           </div>
         </div>
 </div>
 </section>
-<% if (user) { %>
-<h2><%= user.name %></h2>
-<%}%>
 
 <%- include('../partials/footer') -%>

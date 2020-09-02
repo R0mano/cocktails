@@ -1,16 +1,17 @@
 <%- include('../partials/header') -%>
 
-
 <section class="main" >
+  <a class="btn btn-primary ml-auto">Create a New Cocktail</a>
   
   <div class="row row-cols-1 row-cols-md-3">
     <% drinks.forEach((drink) => { %>
       <div class="col mb-4">
           <div class="card h-100 ">
+            <a href="/users/drinks/<%= drink._id %>">
             <img src="<%= drink.image %>" class="card-img-top" alt="drink-thumbnail">
+            </a>
             <div class="card-body <%= drink.custom %>">
               <h3 class="card-title drink-name"><%= drink.name %></h3>
-              <!-- <small class="<%= drink.custom %>" >(Custom)</small> -->
             </div>
             <a class="btn btn-sm btn-primary" href="/users/drinks/<%= drink._id %>" >See Details</a>
           </div>

@@ -12,8 +12,26 @@ section.main {
   color: #382933;
 }
 
+form {
+  margin: 2rem 0;
+}
+
 a {
   color: inherit;
+}
+
+a.log {
+  vertical-align: -webkit-baseline-middle;
+  vertical-align: -moz-middle-with-baseline;
+}
+
+.navigation-items {
+  margin: 0 2vw;
+}
+
+#search-by {
+  max-width: 10vw;
+  font-size: .75rem;
 }
 
 .custom {
@@ -32,9 +50,9 @@ a {
 .drink-name {
   text-align: center;
 }
-#add-drink {
-  display: block;
-  margin: 0 auto;
+
+#add-drink-form {
+  display: contents;
 }
 
 #delete-fav-drink-form {
