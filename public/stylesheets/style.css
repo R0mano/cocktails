@@ -51,6 +51,11 @@ a.log {
   text-align: center;
 }
 
+#create-new-cocktail{
+    display: table;
+    margin: 1vh 0 1vh auto;
+}
+
 #add-drink-form {
   display: contents;
 }
