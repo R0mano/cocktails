@@ -1,18 +1,18 @@
 <%- include('../partials/header') -%>
-<section class="top" ></section>
+<section class="top" >
 <form class="form-inline mr-auto" action="/drinks" method="GET">
 <div class="input-group mb-3 mx-auto col-10">
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Search by</label>
   </div>
     <select name="filter" id="search-by">
-      <option value="<%= filterOptions.byDrinkName %>">cocktail name</option>
+      <option selected value="<%= filterOptions.byDrinkName %>">cocktail name</option>
       <option value="<%= filterOptions.byIngredientName %>">ingredient</option>
     </select>
     <input
     class="form-control col-10"
     type="search"
-    placeholder="Search for a cocktail or ingredient (E.g. 'margarita' or 'vodka' or 'orange juice' )"
+    placeholder="E.g. 'margarita' or 'orange juice'"
     aria-label="Search"
     name="userQuery"
   />
@@ -67,7 +67,7 @@
   </ul>
 </nav>
 </form>
-
+</section>
 
 <section class="main" >
   

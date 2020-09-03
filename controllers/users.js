@@ -116,6 +116,7 @@ function createNewCocktail(req, res) {
 }
 
 function show(req, res) {
+  console.log(req.user, 'this is req.user');
   Drink.findById(req.params.id).populate({path: 'comments', populate: {path: 'author', model: 'User'}}).exec(function(err, drink) {
     // console.log(drink, 'drinkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
     // console.log(req.user, 'userrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');

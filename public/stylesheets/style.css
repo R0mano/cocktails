@@ -7,22 +7,36 @@ html, body {
 
 body {
   position: relative;
-  /* background-color: #070d59; */
+  background-color: #f6f5f5;
+  color: #382933;
 }
 
 .navigation {
-  /* background-color: #070d59!important; */
+  background-color: #1a1a2e!important;
+  margin-bottom: 2vh;
+}
+
+.nav-buttons {
+  color: #f6f5f5!important;
+}
+
+.logo{
+  color: #f6f5f5;
 }
 
 #logo {
   max-width: 180px;
 }
 
+/* .top{
+  background-color: #1a1a2e!important;
+} */
+
 section.main {
   padding: 5vw 0;
   max-width: 85%;
   margin: 0 auto;
-  color: #382933;
+  /* color: #382933; */
 }
 
 form {
@@ -58,6 +72,10 @@ a.log {
 #drink-details {
   margin: 0 auto;
   max-width: 90%;
+}
+
+.delete-comment-form {
+  margin-bottom: 0;
 }
 
 .drink-name {
@@ -106,7 +124,7 @@ a.log {
   bottom: 0;
   width: 100%;
   /* height: 7vh; */
-  background-color: #382933;
+  background-color: #1a1a2e;
 }
 
 .footer p {

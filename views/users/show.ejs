@@ -56,15 +56,15 @@
           <p class="card-text"><%= comment.content %></p>
         </div>
          <% if (user && comment.author._id.equals(user.id)) { %>
+          <form class="delete-comment-form" action="/users/drinks/<%= drink._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
         <button class="btn btn-sm btn-danger" >Delete comment</button>
+      </form>
         <% } %>
-        <!-- <a href="#" class="btn btn-primary">Go somewhere</a>
+        <!-- <a href="#" class="btn btn-primary">Go somewhere</a>  -->
       </div>
-    </div> -->
+    </div>
 <br>
     <% }); %>
-       
-      
     </section>
     
     <a class="btn btn-primary" href="/users/drinks">Return to my cocktails</a>

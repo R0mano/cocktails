@@ -4,6 +4,7 @@ const commentsCtrl = require('../controllers/comments.js');
 
 // router.post('/users/drinks/:id/comments', isLoggedIn, commentsCtrl.create);
 router.post('/users/drinks/:id/comments', isLoggedIn, commentsCtrl.create);
+router.delete('/users/drinks/:drink_id/comments/:comment_id', isLoggedIn, commentsCtrl.delete);
 
 
 
