@@ -8,6 +8,6 @@ Logging in with your Google account will let you add a cocktail to your favorite
 ## Features
 
 As a non registered user you can access the app, query cocktails by name, first letter, and ingredient. You can also lookup a cocktails details by clicking on it.
-the cocktail queries are fetching data from an API called TheCocktailDB (https://www.thecocktaildb.com/).
+the cocktail queries are fetching data from an API called [TheCocktailDB](https://www.thecocktaildb.com/).
 As a registered user, you can now add, create, edit, and delete cocktails from/to your favorite cocktails section. you will also be able to post comments on drinks and see what other people wrote.
 Editing a drink will actually create a new "custom drink". The name of a cocktail should be unic in your favorite cocktail. You will be prompt to change it if already existing.
