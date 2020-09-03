@@ -40,11 +40,13 @@ function index(req, res) {
             drinks: [],
           }
         }
-      // console.log(response, 'this is the data retrieved from API');
+      console.log(response, 'this is the data retrieved from API');
       res.render("drinks/index", {
         title: "Cocktails",
         response,
         filterOptions,
+        userQuery,
+
       });
     }
     }

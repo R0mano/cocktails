@@ -15,6 +15,9 @@
     placeholder="E.g. 'margarita' or 'orange juice'"
     aria-label="Search"
     name="userQuery"
+    <% if (userQuery) { %>
+      value="<%= userQuery %>"
+      <% } %>
   />
   <button class="form-control btn btn-outline-success col-2" type="submit">
     Search

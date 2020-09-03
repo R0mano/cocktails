@@ -28,6 +28,10 @@ body {
   max-width: 180px;
 }
 
+#shaker-icon {
+  vertical-align: sub;
+}
+
 /* .top{
   background-color: #1a1a2e!important;
 } */
