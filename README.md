@@ -27,4 +27,6 @@ Wether you're a professional bartender dealing with an odd request or just looki
 - Passport/Google Auth
 - Bootstrap
 
+## [Trello Board](https://trello.com/b/t9QauKDx/sei-cc9-project-2)
+
 ## [=>Cocktails](https://my-favorite-cocktails-app.herokuapp.com/drinks)
