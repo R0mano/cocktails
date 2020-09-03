@@ -7,6 +7,9 @@
   <div class="form-group">
     <label for="cocktail-name">Cocktail Name</label>
     <input type="text" class="form-control" id="cocktail-name" name="drinkName" required>
+    <% if(message) { %>
+    <small class="message" ><%= message %></small>
+    <% } %>
   </div>
 <br>
   

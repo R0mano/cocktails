@@ -14,7 +14,7 @@ module.exports = {
 };
 
 function index(req, res) {
-  console.log(req.query, "This is req.query==========================================");
+  // console.log(req.query, "This is req.query==========================================");
   // console.log(req.user, "this is req.user///////////////////////////////////////");
 
   const queryFilter = req.query.filter || filterOptions.byDrinkName;

@@ -81,6 +81,10 @@ a.log {
   display: block;
 }
 
+.message {
+  color: red;
+}
+
 .user-avatar {
   max-width: 65px;
 }

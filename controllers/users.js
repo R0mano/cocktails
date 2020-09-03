@@ -1,6 +1,9 @@
 const User = require("../models/user");
 const Drink = require('../models/drink');
 
+// const query = {$and:[{name:{$regex: req.body.drinkName, $options: 'i'}},{users:{$regex: req.user._id, $options: 'i'}}]}
+
+
 
 module.exports = {
   index,
@@ -68,38 +71,48 @@ function create(req, res) {
 function newCocktail(req, res) {
   res.render('users/new', {
     title: "Create a New Drink",
+    message: "",
   });
 }
 
 function createNewCocktail(req, res) {
   const newFavDrink = req.body;
-  console.log(newFavDrink, 'req.body');
-
-  drink = new Drink();
-  drink.name = newFavDrink.drinkName;
-  drink.custom = 'custom';
-  if (newFavDrink.image) {
-    drink.image = newFavDrink.image;
-  }
-  drink.glass = newFavDrink.glass;
-  drink.instructions = newFavDrink.instructions;
-  drink.users.push(req.user._id);
-  
-  for (let i = 0; i < newFavDrink.ingredientName.length; i++) {
-    if(newFavDrink.ingredientName[i]) {
-    drink.ingredients.push( {
-      name: newFavDrink.ingredientName[i],
-      qty: (newFavDrink.qty[i]) ? newFavDrink.qty[i] : '',
-    });
-  }
-  }
-  console.log(drink, "new populated Drink()");
-
-  drink.save(function(err) {
-    if (err) {console.log(err)}
-    res.redirect('/users/drinks');
+  // console.log(newFavDrink.drinkName, 'newFavDrink.drinkName');
+  // console.log(req.user._id, 'req.user._id');
+  Drink.find({$and:[{name:{$regex: newFavDrink.drinkName, $options: 'i'}},{users: req.user._id}]}, function(err, drink) {
+    if(err) {console.log(err);} else if (drink.length) {
+      // console.log(drink);
+      res.render('users/new', {title: "Create a New Drink", message: "Oops! It looks like there's already a cocktail with this name in your favorites. Please give your cocktail a different name."});
+    } else {
+      // console.log(newFavDrink, 'req.body');
+    
+      newDrink = new Drink();
+      newDrink.name = newFavDrink.drinkName;
+      newDrink.custom = 'custom';
+      if (newFavDrink.image) {
+        newDrink.image = newFavDrink.image;
+      }
+      newDrink.glass = newFavDrink.glass;
+      newDrink.instructions = newFavDrink.instructions;
+      newDrink.users.push(req.user._id);
+      
+      for (let i = 0; i < newFavDrink.ingredientName.length; i++) {
+        if(newFavDrink.ingredientName[i]) {
+        newDrink.ingredients.push( {
+          name: newFavDrink.ingredientName[i],
+          qty: (newFavDrink.qty[i]) ? newFavDrink.qty[i] : '',
+        });
+      }
+      }
+      // console.log(newDrink, "new populated Drink()");
+    
+      newDrink.save(function(err) {
+        if (err) {console.log(err)}
+        res.redirect('/users/drinks');
+      });    
+    }
   });
-
+  
 }
 
 function show(req, res) {
@@ -121,15 +134,26 @@ function edit(req, res) {
       res.render('users/edit', {
         title: 'Edit a cocktail',
         drink,
+        message: "",
       });
     }   
   });
 }
 
 function update(req, res) {
-  // console.log(req.body, 'This is req.body');
+  console.log(req.params, 'This is req.params');
+  const oldDrinkId = req.params.id;
   const updatedDrink = req.body;
-
+  console.log(updatedDrink.drinkName, 'updatedDrink.drinkName');
+  console.log(req.user._id, 'req.user._id');
+  Drink.find({$and:[{name:{$regex: updatedDrink.drinkName, $options: 'i'}},{users: req.user._id}]}, function(err, drink) {
+    if (err) {console.log(err);} else if (drink.length) {
+      // console.log(drink);
+      Drink.findById(oldDrinkId, function(err, oldDrink) {
+        console.log(oldDrink, 'oldDrink');
+        res.render('users/edit', {title: 'Edit a cocktail', drink: oldDrink, message: "Oops! It looks like there's already a cocktail with this name in your favorites. Please give your cocktail a different name."});
+      });
+    } else {
   let newDrink = new Drink();
 
 
@@ -150,12 +174,14 @@ function update(req, res) {
     newDrink.users.push(req.user._id);
     newDrink.custom = 'custom';
     // console.log(newDrink.ingredient, 'newDrink.ingredients AFTER');
-
+  
     // console.log(newDrink, 'This is the finished and updated newDrink');
     newDrink.save(function(err) {
       res.redirect('/users/drinks');
     });
-}
+  }
+});
+  }
 
 function deleteOne(req, res) {
   Drink.findByIdAndDelete(req.params.id, function(err) {
