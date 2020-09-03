@@ -5,7 +5,6 @@ const rootURL = 'https://www.thecocktaildb.com/api/json/v1/1/';
 const filterOptions = {
   byDrinkName: 'search.php?s=',
   byIngredientName: 'filter.php?i=',
-  // byFirstLetter: 'search.php?f=',
 }
 
 module.exports = {

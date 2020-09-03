@@ -8,7 +8,7 @@ html, body {
 body {
   position: relative;
   background-color: #f6f5f5;
-  color: #382933;
+  color: #1a1a2e;
 }
 
 .navigation {
@@ -72,6 +72,10 @@ a.log {
 #drink-details {
   margin: 0 auto;
   max-width: 90%;
+}
+
+#delete-all-form {
+  margin-bottom: 1rem;
 }
 
 .delete-comment-form {
