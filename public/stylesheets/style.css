@@ -35,15 +35,11 @@ body {
   vertical-align: sub;
 }
 
-/* .top{
-  background-color: #1a1a2e!important;
-} */
 
 section.main {
   padding: 5vw 0;
   max-width: 85%;
   margin: 0 auto;
-  /* color: #382933; */
 }
 
 form {
@@ -122,7 +118,6 @@ a.log {
   padding: 0 10vh;
   max-width: 80%;
   margin: 0 auto;
-  /* color: #382933; */
 }
 
 .footer-padding {
@@ -134,7 +129,6 @@ a.log {
   text-align: center;
   bottom: 0;
   width: 100%;
-  /* height: 7vh; */
   background-color: #1a1a2e;
 }
 

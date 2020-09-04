@@ -32,7 +32,7 @@ const commentSchema = Schema (
   }, {
     timestamps: true,
   }
-)
+);
 
 const drinkSchema = new Schema(
   {
