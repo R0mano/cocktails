@@ -7,6 +7,9 @@ Wether you're a professional bartender dealing with an odd request or just looki
 ## Screenshots
 
 ![app-screenshot](https://i.imgur.com/nCySv83.jpg)
+</br>
+</br>
+</br>
 ![app-screenshot](https://i.imgur.com/Al4cit5.png)
 
 ## Features
