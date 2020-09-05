@@ -78,13 +78,13 @@
     <% if (response.drinks !== null) { response.drinks.forEach((drink) => { %>
       <div class="col mb-4">
         <div class="card h-100">
-          <a href="/drinks/<%= drink.idDrink %>">
-          <img src="<%= drink.strDrinkThumb %>" class="card-img-top" alt="drink-thumbnail">
+          <a href="/drinks/<%= drink.idDrink || drink._id %>">
+          <img src="<%= drink.strDrinkThumb || drink.image%>" class="card-img-top" alt="drink-thumbnail">
         </a>
-          <div class="card-body">
-            <h3 class="card-title drink-name"><%= drink.strDrink %></h3>
+          <div class="card-body <%= drink.custom %>">
+            <h3 class="card-title drink-name"><%= drink.strDrink || drink.name %></h3>
           </div>
-          <a class="btn btn-sm btn-primary" href="/drinks/<%= drink.idDrink %>">See Details</a>
+          <a class="btn btn-sm btn-primary" href="/drinks/<%= drink.idDrink || drink._id %>">See Details</a>
           </div>
         </div>
   <% });} %>

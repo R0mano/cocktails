@@ -3,13 +3,21 @@
   <div class="row row-cols-1 row-cols-md-3">
       <div id="drink-details" class="col mb-4">
           <div class="card h-100">
-            <img src="<%= drink.strDrinkThumb %>" class="card-img-top" alt="drink-thumbnail">
-            <div class="card-body">
-              <h3 class="card-title drink-name"><%= drink.strDrink %></h3>
+            <img src="<%= drink.strDrinkThumb || drink.image %>" class="card-img-top" alt="drink-thumbnail">
+            <div class="card-body <%= drink.custom %> ">
+              <h3 class="card-title drink-name"><%= drink.strDrink || drink.name %></h3>
               <hr>
-              <p class="card-text"> <strong>Ingredients:</strong> <% if (drink.strIngredient1) { %> <%= drink.strIngredient1 %><% } %><% if (drink.strIngredient2) { %>, <%= drink.strIngredient2  %><% } %><% if (drink.strIngredient3) { %>, <%= drink.strIngredient3 %><% } %><% if (drink.strIngredient4) { %>, <%= drink.strIngredient4 %><% } %><% if (drink.strIngredient5) { %>, <%= drink.strIngredient5 %><% } %><% if (drink.strIngredient6) { %>, <%= drink.strIngredient6 %><% } %><% if (drink.strIngredient7) { %>, <%= drink.strIngredient7 %><% } %><% if (drink.strIngredient8) { %>, <%= drink.strIngredient8 %><% } %><% if (drink.strIngredient9) { %>, <%= drink.strIngredient9 %><% } %><% if (drink.strIngredient10) { %>, <%= drink.strIngredient10 %><% } %><% if (drink.strIngredient11) { %>, <%= drink.strIngredient11 %><% } %><% if (drink.strIngredient12) { %>, <%= drink.strIngredient12 %><% } %><% if (drink.strIngredient13) { %>, <%= drink.strIngredient13 %><% } %><% if (drink.strIngredient14) { %>, <%= drink.strIngredient14 %><% } %><% if (drink.strIngredient15) { %>, <%= drink.strIngredient15 %><% } %> </p>
-              <p class="card-text"><strong>Serve in:</strong> <%= drink.strGlass %></p>
-              <p class="card-text"> <strong>Instructions:</strong> <%= drink.strInstructions %></p>
+              <p class="card-text"> <strong>Ingredients:</strong>
+                <% if (drink.ingredients) { %>
+                <%drink.ingredients.forEach((i) => {%>
+                  <%= i.qty %> <%= i.name %>,
+                  <% }); %>
+                  <% } else { %>
+
+                 <% if (drink.strIngredient1) { %> <%= drink.strIngredient1 %><% } %><% if (drink.strIngredient2) { %>, <%= drink.strIngredient2  %><% } %><% if (drink.strIngredient3) { %>, <%= drink.strIngredient3 %><% } %><% if (drink.strIngredient4) { %>, <%= drink.strIngredient4 %><% } %><% if (drink.strIngredient5) { %>, <%= drink.strIngredient5 %><% } %><% if (drink.strIngredient6) { %>, <%= drink.strIngredient6 %><% } %><% if (drink.strIngredient7) { %>, <%= drink.strIngredient7 %><% } %><% if (drink.strIngredient8) { %>, <%= drink.strIngredient8 %><% } %><% if (drink.strIngredient9) { %>, <%= drink.strIngredient9 %><% } %><% if (drink.strIngredient10) { %>, <%= drink.strIngredient10 %><% } %><% if (drink.strIngredient11) { %>, <%= drink.strIngredient11 %><% } %><% if (drink.strIngredient12) { %>, <%= drink.strIngredient12 %><% } %><% if (drink.strIngredient13) { %>, <%= drink.strIngredient13 %><% } %><% if (drink.strIngredient14) { %>, <%= drink.strIngredient14 %><% } %><% if (drink.strIngredient15) { %>, <%= drink.strIngredient15 %><% } %> </p>
+                 <% } %>
+              <p class="card-text"><strong>Serve in:</strong> <%= drink.strGlass || drink.glass %></p>
+              <p class="card-text"> <strong>Instructions:</strong> <%= drink.strInstructions || drink.instructions %></p>
             </div>
             <% if (user) { %>
               <form id="add-drink-form" action="/users/drinks" method="POST" >

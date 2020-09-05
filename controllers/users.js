@@ -121,15 +121,11 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-  console.log(req.params, 'This is req.params');
   const oldDrinkId = req.params.id;
   const updatedDrink = req.body;
-  console.log(updatedDrink.drinkName, 'updatedDrink.drinkName');
-  console.log(req.user._id, 'req.user._id');
   Drink.find({$and:[{name:{$regex: updatedDrink.drinkName, $options: 'i'}},{users: req.user._id}]}, function(err, drink) {
     if (err) {console.log(err);} else if (drink.length) {
       Drink.findById(oldDrinkId, function(err, oldDrink) {
-        console.log(oldDrink, 'oldDrink');
         res.render('users/edit', {title: 'Edit a cocktail', drink: oldDrink, message: "Oops! It looks like there's already a cocktail with this name in your favorites. Please give your cocktail a different name."});
       });
     } else {
