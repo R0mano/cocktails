@@ -4,6 +4,13 @@
 Cockatails is a fun web application that allows you to lookup the recipe of a particular drink, or the cocktails you can make based on the ingredients you have available. <br/>
 Wether you're a professional bartender dealing with an odd request or just looking for a tasty drink to cheer with your friends, the Cocktails app will help you find the drink you want.
 
+## Screenshots
+
+![app-screenshot](https://i.imgur.com/nCySv83.jpg)
+</br>
+</br>
+</br>
+![app-screenshot](https://i.imgur.com/Al4cit5.png)
 
 ## Features
 
