@@ -24,9 +24,10 @@ function index(req,res) {
 
 function create(req, res) {
   const newFavDrink = JSON.parse(req.body.drink);
+  console.log(JSON.parse(req.body.drink), ' <- This is req.body');
   const regExIngredient = new RegExp("strIngredient");
 
-  Drink.findOne({name: newFavDrink.strDrink}, function(err, drink) {
+  Drink.findOne({name: newFavDrink.strDrink ? newFavDrink.strDrink : newFavDrink.name}, function(err, drink) {
     if (drink && !drink.users.includes(req.user._id)) {
       drink.users.push(req.user._id);
     } else {
